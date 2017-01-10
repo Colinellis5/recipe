@@ -6,7 +6,7 @@ def print_divider
 end
 
 def print_progress_bar
-  3.times { sleep 0.5; print "." }
+  3.times { print "." ;sleep 0.5}
   puts "\n"
 end
 
@@ -51,7 +51,7 @@ loop do
     end
 end
 
-## the recipe
+## the steps of the recipe
 
 steps = [
   { description: "Scrape potatoes", action: "scrape_potatoes" },
@@ -71,7 +71,7 @@ steps = [
 ]
 
 
-## inform user about recipe
+## inform user about the steps in the recipe
 
 print_divider
 puts "here's what we are going to do, step by step\n"
@@ -119,4 +119,27 @@ def break_eggs
     print "Breaking egg #{counter}"
     print_progress_bar
   end
+end
+
+## user descides when to go to next step
+
+def ask_next_step(step, index)
+  print "Are you ready for step #{index + 1}?\n(#{step[:description]})? Please press 'y' if so"
+  answer = gets.chomp
+  answer == "y"
+end
+
+## Iterating through the steps
+
+steps.each_with_index do |step, index|
+  print_divider
+  loop do
+    ready = ask_next_step(step, index)
+    break if ready
+
+    puts:"ok, I am giving you some extra time"
+    print_progress_bar
+  end
+
+  send(step[:action])
 end
