@@ -18,3 +18,12 @@ ingredients = [
   { name: 'oil', quantity: 'some' },
   { name: 'salt', quantity: 'some' },
 ]
+
+puts "*    Let's cook a Spanish Omelette!    *"
+print_divider
+
+puts "You need the following ingredients:"
+
+ingredients.each do |name, quantity|
+  puts "you need #{ingredients[:quantity]} of #{ingredients[:name]}"
+end
