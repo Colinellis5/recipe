@@ -24,6 +24,21 @@ print_divider
 
 puts "You need the following ingredients:"
 
-ingredients.each do |name, quantity|
-  puts "you need #{ingredients[:quantity]} of #{ingredients[:name]}"
+ingredients.each do |ingredient|
+  puts "you need #{ingredient[:quantity]} #{ingredient[:name]}"
+end
+
+def ask
+  puts "do you have everything? (y/n)"
+  @answer = gets.chomp
+end
+
+loop do
+  ask
+    if @answer == "y"
+      puts "great, let's get started"
+      break
+    else
+      puts "please go shopping and press \"y\" when you are ready"
+    end
 end
