@@ -1,3 +1,5 @@
+## creating some handy visueals
+
 def print_divider
   puts "*" * 40
   puts "\n"
@@ -7,6 +9,8 @@ def print_progress_bar
   3.times { sleep 0.5; print "." }
   puts "\n"
 end
+
+## the ingredients
 
 NUM_POTATOES = 5
 NUM_EGGS = 6
@@ -19,6 +23,8 @@ ingredients = [
   { name: 'salt', quantity: 'some' },
 ]
 
+## inform user about ingredients
+
 puts "*    Let's cook a Spanish Omelette!    *"
 print_divider
 
@@ -27,6 +33,8 @@ puts "You need the following ingredients:"
 ingredients.each do |ingredient|
   puts "you need #{ingredient[:quantity]} #{ingredient[:name]}"
 end
+
+## check if user has all ingredients
 
 def ask
   puts "do you have everything? (y/n)"
@@ -42,6 +50,8 @@ loop do
       puts "please go shopping and press \"y\" when you are ready"
     end
 end
+
+## the recipe
 
 steps = [
   { description: "Scrape potatoes", action: "scrape_potatoes" },
@@ -61,9 +71,52 @@ steps = [
 ]
 
 
+## inform user about recipe
+
 print_divider
 puts "here's what we are going to do, step by step\n"
 
 steps.each_with_index do |step, index|
     puts (index+1).to_s + ") " + step[:description]
+end
+
+## defining the actions that belong to the different steps in the recipe
+
+def generic_recipe_step
+  puts "On it!"
+  print_progress_bar
+end
+
+def scrape_potatoes
+  counter = 0
+  while counter < NUM_POTATOES
+    counter += 1
+    print "Scraping potato #{counter}"
+    print_progress_bar
+  end
+end
+
+def cut_potatoes
+  counter = 0
+  while counter < NUM_POTATOES
+    counter += 1
+    print "Cutting potato #{counter} into thick slices"
+    print_progress_bar
+  end
+end
+
+def add_potatoes_to_pan
+  for counter in 1..NUM_POTATOES
+    print "Adding potato #{counter} to the pan."
+    print_progress_bar
+  end
+end
+
+def break_eggs
+  counter = 0
+  while counter < NUM_EGGS
+    counter += 1
+    print "Breaking egg #{counter}"
+    print_progress_bar
+  end
 end
